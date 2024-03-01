@@ -6,7 +6,6 @@ import java.nio.file.Paths;
 
 public class Grafo {
     private boolean[][] matrizAdyacencia;
-
     // Constructor que recibe el nombre de un archivo
     public Grafo(String archivo) throws FileNotFoundException {
         try {
@@ -39,22 +38,59 @@ public class Grafo {
         return matrizAdyacencia;
     }
 
+
+    public void verticeMayorGrado() {
+    
+        int itemVerticeMayorGrado = 0;
+        int maximoGrado = 0; 
+        for (int i = 0; i < this.matrizAdyacencia.length; i++) {
+            int contador = 0;
+
+            for (int j = 0; j < this.matrizAdyacencia[0].length; j++) {
+                contador = this.matrizAdyacencia[i][j] ? contador+=1 : contador;
+            }
+
+            int temp = maximoGrado;
+            maximoGrado = temp < contador ? contador : temp;
+            itemVerticeMayorGrado = temp < contador ? i + 1 : itemVerticeMayorGrado;
+
+        }
+
+        System.out.println("El vertice con mayor grado es el vertice "+itemVerticeMayorGrado+" y tiene grado "+maximoGrado);
+    }
+
+    public int getNumAristas(){
+        int numAristas = 0;
+        for (int i = 0; i < matrizAdyacencia.length; i++) {
+            for (int j = 0; j < matrizAdyacencia[0].length; j++) {
+                if (matrizAdyacencia[i][j] && i < j) {
+                    numAristas+=1;
+                }
+            }
+        }
+
+        return numAristas;
+    }
+
+
     public int getNumVertices(){
 	    return matrizAdyacencia.length;
-    }
+    } 
     
-    /*
-    public static void main(String[] args) throws FileNotFoundException {
-        Grafo g = new Grafo("Ejemplar1.txt");
-        System.out.println(g.esAdyacente(0, 1));
-        boolean[][] matrizAdyacencia = g.getMatrizAdyacencia();
-        System.out.println("Matriz de adyacencia:");
-            for (int i = 0; i < matrizAdyacencia.length; i++) {
-              for (int j = 0; j < matrizAdyacencia[i].length; j++) {
-                  System.out.print(matrizAdyacencia[i][j] ? "1 " : "0 ");
-               }
-               System.out.println();
-           }
-    }
-    */
+    
+    // public static void main(String[] args) throws FileNotFoundException {
+    //     Grafo g = new Grafo("Ejemplar1.txt");
+    //     g.verticeMayorGrado();
+    //     System.out.println("Numero de aristas: "+g.getNumAristas());
+    //     System.out.println(g.esAdyacente(0, 1));
+    //     boolean[][] matrizAdyacencia = g.getMatrizAdyacencia();
+    //     System.out.println("Matriz de adyacencia:");
+    //         for (int i = 0; i < matrizAdyacencia.length; i++) {
+    //           for (int j = 0; j < matrizAdyacencia[i].length; j++) {
+    //               System.out.print(matrizAdyacencia[i][j] ? "1 " : "0 ");
+    //            }
+    //            System.out.println();
+    //        }
+    // }
+    
 }

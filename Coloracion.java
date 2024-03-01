@@ -39,7 +39,7 @@ public class Coloracion{
 		}
 		//Si llegamos aqui es que nunca fallamos, por lo que terminamos de colorear exitosamente
 		String colores = Arrays.toString(coloracion);
-		System.out.println(colores);
+		System.out.println("Coloracion: "+colores);
 		return true;
 	}
 
