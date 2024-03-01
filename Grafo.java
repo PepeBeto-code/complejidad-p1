@@ -39,6 +39,11 @@ public class Grafo {
         return matrizAdyacencia;
     }
 
+    public int getNumVertices(){
+	    return matrizAdyacencia.length;
+    }
+    
+    /*
     public static void main(String[] args) throws FileNotFoundException {
         Grafo g = new Grafo("Ejemplar1.txt");
         System.out.println(g.esAdyacente(0, 1));
@@ -51,4 +56,5 @@ public class Grafo {
                System.out.println();
            }
     }
+    */
 }
